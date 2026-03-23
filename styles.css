@@ -1,0 +1,170 @@
+body{
+    margin:0;
+    font-family:Arial;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 96px;
+    background: #efb1a6;
+    z-index: 10;
+    border-bottom: 4px solid #B53325;
+}
+
+.header .container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.left {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+}
+
+.burger {
+    width: 56px;
+    height: 56px;
+    border: 3px solid #B53325;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 32px;
+    height: 4px;
+    background: #B53325;
+    border-radius: 2px;
+}
+
+.logo {
+    width: 153px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.logo img {
+    width: 153px;  
+    height: 56px;  
+    object-fit: contain;
+    display: block;
+}
+
+.icons {
+    display: flex;
+    gap: 16px;
+}
+
+.icons span {
+    width: 56px;
+    height: 56px;
+    border: 3px solid #B53325;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    cursor: pointer;
+}
+
+.scroll-section{
+    height:500vh;
+}
+
+.sticky{
+    position:sticky;
+    top:70px;
+    height:calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.box{
+    width:300px;
+    height:300px;
+    position:relative;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#f39c12;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    opacity:0;
+    transition:.4s;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.text-section{
+    height: 984px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 4px dashed #B53325;
+}
+
+.content{
+    max-width: 1200px;
+}
+
+h1{
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    color:#c0392b;
+    margin-bottom:56px;
+}
+
+.highlight{
+    color:#FFBC70;
+    font-size:32px;
+    margin:20px 0;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.accent{
+    color:#c0392b;
+    font-size:48px;
+    font-weight:bold;
+}
+
+.text{
+    color:#000;
+    font-size:32px;
+    font-weight:400;
+    margin-bottom:56px;
+}
+
+.highlight,
+.accent,
+.text {
+    font-family: 'Roboto', sans-serif;
+}
