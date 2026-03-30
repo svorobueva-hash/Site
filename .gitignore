@@ -5,3 +5,5 @@ dist/
 *.log
 id_ed25519_second
 id_ed25519_second.pub
+.vercel
+.env*.local

@@ -93,7 +93,6 @@ function changeProductQty(id, delta) {
         cart.push({ ...product, qty: 1 });
     }
 
-    // обновляем цифру на карточке
     const qtySpan = document.getElementById(`productQty${id}`);
     const currentQty = cart.find(i => i.id === id)?.qty || 0;
     qtySpan.innerText = currentQty;
@@ -191,30 +190,41 @@ function renderCart() {
 
 // Отправка заказа
 async function checkout() {
-    const data = {
+  try {
+    const total = cart.reduce((sum, i) => sum + Number(i.price) * i.qty, 0);
+    if (cart.length === 0) {
+    alert("Корзина пуста!");
+    return;
+    }
+    const response = await fetch("/api/order", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
         name: document.getElementById("name").value,
         phone: document.getElementById("phone").value,
         address: document.getElementById("address").value,
         email: document.getElementById("email").value,
         note: document.getElementById("note").value,
-        cart
-    };
-
-    const res = await fetch("/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
+        total
+    })
     });
 
-    const json = await res.json();
+    const json = await response.json();
 
     if (json.success) {
-        alert("Заказ отправлен! Проверьте почту.");
-        closeModal();
-        cart = [];
-        renderCart();
-        renderProducts(); // обновляем карточки, чтобы qty сбросились
+      alert("Заказ отправлен! Проверьте почту.");
+      closeModal();
+      cart = [];
+      renderCart();
+      renderProducts();
+    } else {
+      console.error("Ошибка при оформлении заказа:", json);
+      alert("Ошибка при оформлении заказа.");
     }
+  } catch (err) {
+    console.error("Ошибка при отправке заказа:", err);
+    alert("Ошибка при отправке заказа.");
+  }
 }
 
 // Модальное окно
