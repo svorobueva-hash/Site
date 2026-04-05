@@ -5,40 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Розовый чизкейк</title>
 <link href="https://fonts.googleapis.com/css2?family=Arsenal+SC:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="header">
-  <div class="container1">
+  <div class="container">
     <div class="left">
-      <div class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="logo"><img src="logo.png" alt="Логотип"></div>
+      <div class="navigation_header">
+            <a href="#about_us"><button data-scroll-to="about">О нас</button></a>
+            <a href="#spesial1"><button data-scroll-to="offers">Спец. предложения</button></a>
+            <a href="#popular"><button data-scroll-to="popular">Популярное</button></a>
+            <a href="#tovary"><button data-scroll-to="products">Товары</button></a>
+            <a href="#map"><button data-scroll-to="map">Карта</button></a>
       </div>
-      <div class="logo">
-        <img src="logo.png" alt="Логотип">
-      </div>
-  </div><div class="icons">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  </div>
+    <div class="icons">
+      <button class="button1"></button>
+      <button class="button2"></button>
+      <button class="button3"></button>
+    </div></div>
 </header>
 
 <section class="scroll-section">
   <div class="sticky">
     <div class="box">
-      <div class="slide active">1</div>
-      <div class="slide">2</div>
-      <div class="slide">3</div>
-      <div class="slide">4</div>
-      <div class="slide">5</div>
+      <div class="slide active"><img src="anim1.png"></div>
+      <div class="slide"><img src="anim2.png"></div>
+      <div class="slide"><img src="anim3.png"></div>
+      <div class="slide"><img src="anim4.png"></div>
+      <div class="slide"><img src="anim5.png"></div>
+      <div class="slide"><img src="anim6.png"></div>
+      <div class="slide"><img src="anim7.png"></div>
+      <div class="slide"><img src="anim8.png"></div>
+      <div class="slide"><img src="anim9.png"></div>
+      <div class="slide"><img src="anim10.png"></div>
+      <div class="slide"><img src="anim11.png"></div>
+      <div class="slide"><img src="anim12.png"></div>
+      <div class="slide"><img src="anim13.png"></div>
+      <div class="slide"><img src="anim14.png"></div>
     </div>
   </div>
 </section>
+
+<!-- ПРИВЕТСВЕННАЯ ИНФА -->
 
 <section class="text-section">
   <div class="content">
@@ -55,60 +67,219 @@
   </div>
 </section>
 
-<div class="container">
+<!-- О НАС -->
 
-<div class="products" id="products"></div>
+<section id="about_us" class="about_us">
+    
+    <div class="about_us_content">
+        <section class="fade-up"><div class="about_us_title">О НАС</div></section>
+        <section class="fade-up"><div class="about_us_text_photo">
+            <div class="about_us_text">
+                <div class="about_us_text1">
+                    <div class="about_us_krujok"></div>
+                    <div class="about_us_text_text">
+                        <h2>РАБОТАЕМ КРУГЛОСУТОЧНО</h2>
+                        <p>Самовывоз 24 часа</p>
+                    </div>
+                </div>
+                <div class="about_us_text2">
+                    <div class="about_us_krujok"></div>
+                    <div class="about_us_text_text">
+                        <h2>ДОСТАВЛЯЕМ НА ДОМ</h2>
+                        <p>Курьерская доставка на дом по СПб и Лен. области </p>
+                    </div>
+                </div>
+                <div class="about_us_text3">
+                    <div class="about_us_krujok"></div>
+                    <div class="about_us_text_text">
+                        <h2>ВЫДАЕМ НАПРОКАТ</h2>
+                        <p>Прокат кондитерских форм и приспособлений</p>
+                    </div>
+                </div>
+                <div class="about_us_text4">
+                    <div class="about_us_krujok"></div>
+                    <div class="about_us_text_text">
+                        <h2>ФОТОПЕЧАТЬ</h2>
+                        <p>Печатаем на кондитерский изделеях </p>
+                    </div>
+                </div>
+                <div class="about_us_text5">
+                    <div class="about_us_krujok"></div>
+                    <div class="about_us_text_text">
+                        <h2>КОНСУЛЬТИРУЕМ <br> ПО АССОРТИМЕНТУ</h2>
+                        <p>Индивидуальные консультации по подбору оптимального решения</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about_us_images">
+                <div class="about_us_image1"></div>
+                <div class="about_us_image2"></div>
+            </div>
+        </div>        
+    </div></section>
+    <div class="about_us_back">
+        <div class="about_us_back1"></div>
+        <div class="about_us_back2"></div>
+    </div>
+</section>
 
-<div class="cart">
-<h2>Корзина</h2>
-<div id="cartItems"></div>
+<!-- СПЕЦ ПРЕДЛОЖЕНИЯ -->
 
-<button class="checkoutBtn" onclick="openModal()">Отправить</button>
-<div class="modal" id="orderModal">
-<div class="modal-content">
+<section id="spesial1" class="spesial1"><div class="spesial">
+    <section class="fade-up"><h1>СПЕЦИАЛЬНЫЕ ПРЕДЛОЖЕНИЯ</h1></section>
+    <section class="fade-up"><div class="spesial_content">
+        <div class="spesial_content_case">
+            <h2>БЕСПЛАТНАЯ <br> ДОСТАВКА 24 ЧАСА</h2>
+            <p>При заказе от 5000 РУБ </p>
+        </div>
+        <div class="spesial_content_case">
+            <h2>ДОСТАВКА КУРЬЕРСКОЙ СЛУЖБОЙ</h2>
+            <p>По СПб и ЛО 24 часа </p>
+        </div>
+        <div class="spesial_content_case">
+            <h2>КРУГЛОСУТОЧНО</h2>
+            <p>Принимаем заказы</p>
+        </div>
+    </div></div></section>
+</section>
 
-<div class="modal-header">
-<h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+<!-- ПОПУЛЯРНЫЕ ТОВАРЫ // -->
 
-<div class="modal-actions">
-<button class="contacts">Контакты</button>
-<span class="close" onclick="closeModal()">✖</span>
-</div>
-</div>
+<section class="popular1"><section id="popular" class="popular">
+    <section class="fade-up"><h1>ПОПУЛЯРНЫЕ ТОВАРЫ</h1></section>
+    <section class="fade-up"><div class="popular_content">
+        <div class="popular_content_1">
+            <div class="popular_img1"></div>
+            <div class="popular_disctrprp">
+                <p>Глазурь молочная твердая <br> лауриновая Chocvic Lucia, 1,5 кг</p>
+                <h3>1 210 ₽</h3>
+            </div>
+        </div>
+        <div class="popular_content_1">
+            <div class="popular_img2"></div>
+            <div class="popular_disctrprp">
+                <p>Малина сублимированная кусочки, <br> I Love Bake, 50 г</p>
+                <h3>459 ₽</h3>
+            </div>
+        </div>
+    </div></section>
+</section></section>
 
-<div class="modal-body">
 
-  <div class="form-column">
-  <label>ФИО</label>
-  <input id="name">
 
-  <label>Телефон</label>
-  <input id="phone">
+<!-- ТОВАРЫ // -->
 
-  <label>Адрес</label>
-  <input id="address">
+<section id="tovary" class="tovary">
+    <section class="fade-up"><h1>ТОВАРЫ</h1></section>
+    <div class="container">
+        <section class="fade-up"><div class="products" id="products"></div></section>
+        <section class="fade-up"><div class="cart">
+            <h2>Корзина</h2>
+            <div id="cartItems"></div>
 
-  <label>Почта</label>
-  <input id="email">
-  </div>
+            <button class="checkoutBtn" onclick="openModal()">Отправить</button>
+            
+        </div></section>
+    </div>
+</section>
 
-  <div class="note-column">
-  <textarea id="note" placeholder="Примечание..."></textarea>
-  </div>
-<div class="total" id="modalTotal"></div>
-</div>
-  <div style="margin:10px 0;">
-          <input type="checkbox" id="privacyCheck" onclick="updateCheckoutBtn()">
-          <label for="privacyCheck">Я согласен с <a href='#' target='_blank'>политикой конфиденциальности</a></label>
-  </div>
-<div class="modal-footer">
-  <button id="checkoutBtn" onclick="checkout()">Отправить</button>
-</div>
 
-</div>
-</div>
-</div>
-</div>
+
+<!-- КАРТА // -->
+
+<section id="map" class="map">
+    <div class="map_content">
+        <section class="fade-up"><div class="about_us_title">КАРТА</div></section>
+        <section class="fade-up"><div class="map_field">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.853350309581!2d30.314043177320713!3d59.93457556242734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310526f0854f%3A0xdbd92a3587fa4dc4!2z0JHQvtC70YzRiNCw0Y8g0JzQvtGA0YHQutCw0Y8g0YPQuy4sIDE4LCDQodCw0L3QutGCLdCf0LXRgtC10YDQsdGD0YDQsywg0KDQvtGB0YHQuNGPLCAxOTExODY!5e0!3m2!1sru!2sus!4v1774823179648!5m2!1sru!2sus" 
+                width=100% 
+                height=100%
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div></section>
+    <div class="map_back">
+        <div class="map_back1"></div>
+        <div class="map_back2"></div>
+    </div>
+</section>
+
+<!-- ФУТЕР -->
+
+ <section class="footer">
+    <div class="footer_content">
+        <div class="footer_emale_phone">
+            <div class="footer_emale">
+                <h2>ПОЧТА:</h2>
+                <p>info@pinkcake.ru</p>
+            </div>
+            <div class="footer_phone">
+                <h2>ТЕЛЕФОН:</h2>
+                <p>+7 812 111 22 33</p>
+            </div>
+        </div>
+        <div class="footer_adress">
+            <h2>АДРЕС:</h2>
+            <p>Россия, 191186, Санкт-Петербург, <br> ул. Большая Морская, 18</p>
+        </div>
+        <div class="footer_contacts">
+            <h2>КОНТАКТЫ:</h2>
+            <div class="footer_icons">
+                <button class="button1"></button>
+                <button class="button2"></button>
+                <button class="button3"></button>
+            </div>
+        </div>
+    </div>
+ </section>
+
+ <div class="modal" id="orderModal">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+
+                        <div class="modal-actions">
+                            <button class="contacts">Контакты</button>
+                            <span class="close" onclick="closeModal()">✖</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-column">
+                            <label>ФИО</label>
+                            <input id="name">
+
+                            <label>Телефон</label>
+                            <input id="phone">
+
+                            <label>Адрес</label>
+                            <input id="address">
+
+                            <label>Почта</label>
+                            <input id="email">
+                            </div>
+
+                            <div class="note-column">
+                            <textarea id="note" placeholder="Примечание..."></textarea>
+                        </div>
+                        <div class="total" id="modalTotal"></div>
+                    </div>
+                    <div style="margin:10px 0;">
+                        <input type="checkbox" id="privacyCheck" onclick="updateCheckoutBtn()">
+                        <label for="privacyCheck">Я согласен с <a href='#' target='_blank'>политикой конфиденциальности</a></label>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="checkout()">Отправить</button>
+                    </div>
+
+                </div>
+            </div>
 
 <script src="script.js"></script>
 </body>

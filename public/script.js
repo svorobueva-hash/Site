@@ -19,6 +19,80 @@ slides[index].classList.add("active");
 
 });
 
+// хеддер
+
+(function() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    const scrollSection = document.querySelector('.scroll-section');
+    let isInsideScrollSection = false;
+
+    if (scrollSection) {
+        scrollSection.addEventListener('mouseenter', () => {
+            isInsideScrollSection = true;
+        });
+        scrollSection.addEventListener('mouseleave', () => {
+            isInsideScrollSection = false;
+        });
+    }
+
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    window.addEventListener('scroll', function() {
+        // Если курсор внутри анимашки то ничего не делаем
+        if (isInsideScrollSection) return;
+
+        if (!ticking) {
+            requestAnimationFrame(function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > lastScrollTop && currentScroll > 50) {
+                    header.classList.add('hidden');
+                } else if (currentScroll < lastScrollTop) {
+                    header.classList.remove('hidden');
+                }
+                
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+})();
+
+(function() {
+  function initScrollAnimation() {
+    
+    const existingElements = document.querySelectorAll('.content h1, .content .text, .content .highlight, .content .accent');
+    
+    const newElements = document.querySelectorAll('.fade-up');
+    // Объединяем
+    const allElements = [...existingElements, ...newElements];
+    if (!allElements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    allElements.forEach(el => observer.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimation);
+  } else {
+    initScrollAnimation();
+  }
+})();
+
+
 
 /* Корзина и слайды с продуктами */
 const products = [

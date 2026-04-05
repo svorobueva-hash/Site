@@ -1,19 +1,42 @@
 body{
     margin:0;
-    font-family:Arial;
+    font-family:Arsenal SC;
+    align-items: center;
+    justify-content: center;
 }
+html {
+  scroll-behavior: smooth;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/*    хедер   */
+
 
 .header {
     position: fixed;
     top: 0;
     width: 100%;
     height: 96px;
-    background: #efb1a6;
+    background: #FF7768;
     z-index: 10;
     border-bottom: 4px solid #B53325;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s ease;
 }
-
-.header .container1 {
+.header .container {
     max-width: 1520px;
     margin: 0 auto;
     padding: 0 20px;
@@ -25,64 +48,94 @@ body{
 .left {
     display: flex;
     align-items: center;
-    gap: 72px;
-}
-
-.burger {
-    width: 56px;
-    height: 56px;
-    border: 3px solid #B53325;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 8px 0;
-    box-sizing: border-box;
-    cursor: pointer;
-}
-
-.burger span {
-    display: block;
-    width: 32px;
-    height: 4px;
-    background: #B53325;
-    border-radius: 2px;
 }
 
 .logo {
-    width: 153px;
-    height: 56px;
+    width: 109px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 24px;
 }
-
 .logo img {
-    width: 153px;  
-    height: 56px;  
+    width: 109px;  
+    height: 40px;  
     object-fit: contain;
     display: block;
 }
+.navigation_header {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-left: 64px;
+}
+.header.hidden {
+  transform: translateY(-100%);
+}
+.navigation_header button {
+    background: none;
+    border: none;
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: #ffffff;
+    padding-bottom: 0px;          /* место для подчёркивания */
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+.navigation_header button:hover {
+    border-bottom-color: #ffffff; /* цвет подчёркивания */
+}
+.navigation_header button:active {
+    border-bottom-color: #B53325;
+    color: #B53325;
+}
+
+
 
 .icons {
     display: flex;
+    flex-direction: row;
     gap: 16px;
 }
-
-.icons span {
+.icons button {
     width: 56px;
     height: 56px;
-    border: 3px solid #B53325;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    cursor: pointer;
+    border: 2px #B53325;
+    border-radius: 16%;
+    transition: background-image 0.2s ease;
 }
+.button1 {
+    background-image: url('logo_tg.png');
+}
+.button1:hover {
+    background-image: url('logo_tg2.png')
+}
+.button1:active {
+    background-image: url('logo_tg3.png')
+}
+.button2 {
+    background-image: url('logo_vk.png');
+}
+.button2:hover {
+    background-image: url('logo_vk2.png')
+}
+.button2:active {
+    background-image: url('logo_vk3.png')
+}
+.button3 {
+    background-image: url('logo_ws.png');
+}
+.button3:hover {
+    background-image: url('logo_ws2.png')
+}
+.button3:active {
+    background-image: url('logo_ws3.png')
+}
+
+
 
 .scroll-section{
     height:500vh;
@@ -98,16 +151,16 @@ body{
 }
 
 .box{
-    width:300px;
-    height:300px;
+    width: 100%;
+    height: 100%;
     position:relative;
 }
 
 .slide{
     position:absolute;
-    width:100%;
+    width:99%;
     height:100%;
-    background:#f39c12;
+    background: none;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -120,8 +173,12 @@ body{
     opacity:1;
 }
 
+
+
+/*     приветственный блок     */
+
 .text-section{
-    height: 984px;
+    height: 858px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,14 +220,250 @@ h1{
     margin-bottom:56px;
 }
 
-.highlight,
-.accent,
-.text {
-    font-family: 'Roboto', sans-serif;
+/* Базовое скрытое состояние для анимируемых элементов */
+.content h1,
+.content .text,
+.content .highlight,
+.content .accent {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform;
+}
+
+/* Видимое состояние */
+.content h1.visible,
+.content .text.visible,
+.content .highlight.visible,
+.content .accent.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/*    о нас    */
+
+.about_us {
+    border-bottom: 4px dashed #B53325;
+}
+.about_us_content {
+    margin: 80px 256px 80px 256px ;
+}
+.about_us_title {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: #B53325;
+    margin-left: 128px;
+}
+.about_us_text_photo{
+    margin-top: 56px;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+.about_us_images {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.about_us_image1 {
+    height: 320px;
+    width: 624px;
+    background-image: url('cake1.png');
+    border: 2px solid #171414;
+    border-radius: 16px;
+}
+.about_us_image2 {
+    height: 320px;
+    width: 624px;
+    background-image: url('cake2.png');
+    border: 2px solid #171414;
+    border-radius: 16px;
+}
+
+.about_us_text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.about_us_text1,
+.about_us_text2,
+.about_us_text3,
+.about_us_text4,
+.about_us_text5 {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+}
+.about_us_text_text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.about_us_krujok {
+    background-color: #FF7768;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+.about_us_text_text h2 {
+    font-family: 'Arsenal SC', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    color: #171414;
+    margin: 0;
+}
+.about_us_text_text p {
+    font-family: 'Arsenal SC', sans-serif;
+    font-size: 24px;
+    color: #171414;
+    margin: 0;
+}
+
+
+.about_us_back {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -940px 0 16px 0;
+}
+.about_us_back1 {
+    width: 200px;
+    height: 916px;
+    background-color: #FFBC70;
+    border-radius: 0 120px 120px 0;
+}
+.about_us_back2 {
+    width: 200px;
+    height: 916px;
+    background-color: #FFBC70;
+    border-radius: 120px 0 0 120px;
 }
 
 
 
+/*   раздел специальных предложений    */
+
+.spesial1 {
+    border-bottom: 4px dashed #B53325;
+}
+.spesial {
+    margin: 80px 200px 80px 200px;
+}
+.spesial h1 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: #B53325;
+    margin: 0;
+    margin-left: 128px;
+}
+.spesial h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #B53325;
+    margin: 0;
+}
+.spesial p {
+    font-family: 'Arsenal SC', sans-serif;
+    font-size: 24px;
+    color: #171414;
+    margin: 0;
+}
+.spesial_content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 56px;
+}
+.spesial_content_case {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 312px;
+    width: 496px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background-color: #FFF2E4;
+    border: 8px solid #FFBC70;
+    border-radius: 16px;
+}
+
+
+
+/*   популярные товары    */
+
+.popular {
+    margin: 80px 328px 104px 328px;
+}
+.popular1 {
+    border-bottom: 4px dashed #B53325;
+}
+.popular h1 {
+    margin: 0;
+}
+
+.popular_content {
+    margin-top: 56px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+.popular_content_1 {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+.popular_disctrprp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 48px;
+    align-items: center;
+}
+.popular_img1 {
+    height: 480px;
+    width: 624px;
+    background-image: url('pop1.png');
+    border: 8px solid #B53325;
+    border-radius: 16px;
+}
+.popular_img2 {
+    height: 480px;
+    width: 624px;
+    background-image: url('pop2.png');
+    border: 8px solid #B53325;
+    border-radius: 16px;
+}
+.popular p {
+    font-family: 'Arsenal SC', sans-serif;
+    font-size: 24px;
+    color: #171414;
+    margin: 0;
+}
+.popular h3 {
+    font-family: 'Arsenal SC', sans-serif;
+    font-size: 32px;
+    color: #171414;
+    margin: 0;
+    font-weight: bold;
+}
+
+
+
+/*   товары    */
+
+.tovary{
+    border-bottom: 4px dashed #B53325;
+}
+.tovary h1{
+    margin: 80px 328px 0 328px;
+}
 .container{
   display:grid;
   grid-template-columns: 2fr 1fr;
@@ -224,7 +517,7 @@ h1{
   margin-bottom:10px;
 }
 
-button{
+.tovary button{
   background:#ff8f7a;
   border:none;
   padding:8px 12px;
@@ -327,4 +620,978 @@ margin-top:20px;
 .close{
 cursor:pointer;
 font-size:22px;
+}
+
+
+
+
+/*   я карта    */
+
+.map_back {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -947px 0 16px 0;
+}
+.map_back1 {
+    width: 200px;
+    height: 995px;
+    background-color: #FFBC70;
+    border-radius: 0 120px 120px 0;
+}
+.map_back2 {
+    width: 200px;
+    height: 995px;
+    background-color: #FFBC70;
+    border-radius: 120px 0 0 120px;
+}
+
+.map_content {
+    margin: 80px 256px 24px 256px ;
+}
+.map_title {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: #B53325;
+    margin-left: 128px;
+}
+
+.map_field {
+    margin-top: 56px;
+    width: 100%;
+    height: 720px; 
+    position: relative;
+    border-radius: 16px; 
+    overflow: hidden;
+    border: 8px solid #B53325;
+}
+
+.map_field iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*   футээр    */
+
+.footer {
+    background-color: #FFC5B7;
+    border-top: 8px solid #FF7768;
+    height: 280px;
+}
+.footer h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #B53325;
+    margin: 0;
+}
+.footer p {
+    font-family: 'Arsenal SC', sans-serif;
+    font-size: 32px;
+    color: #171414;
+    margin: 0;
+}
+.footer_content {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+    margin: 56px 200px 0 200px;
+    flex-wrap: wrap;
+}
+.footer_emale_phone {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.footer_emale {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+.footer_phone {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
+.footer_adress {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.footer_contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.footer_icons {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+.footer_icons button {
+    width: 56px;
+    height: 56px;
+    border: 2px #B53325;
+    border-radius: 16%;
+    transition: background-image 0.2s ease;
+}
+
+
+
+
+
+
+
+
+/* ========== АДАПТИВНЫЕ СТИЛИ ========== */
+
+
+@media (min-width: 1201px) and (max-width: 1919px) {
+  /* Скрываем жёлтые декоративные блоки */
+  .about_us_back,
+  .map_back {
+    display: none;
+  }
+
+  /* Общие резиновые картинки */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Отступы и ширина контейнеров */
+  .about_us_content {
+    margin: 80px 120px 24px 120px;
+  }
+  .spesial {
+    margin: 80px 120px 104px 120px;
+  }
+  .popular {
+    margin: 80px 150px 104px 150px;
+  }
+  .tovary h1 {
+    margin: 80px 150px 0 150px;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 40px auto;
+  }
+  .map_content {
+    margin: 100px 120px 24px 120px;
+  }
+  .footer_content {
+    margin: 56px 120px 0 120px;
+  }
+
+  /* Размеры шрифтов */
+  .navigation_header button {
+    font-size: 28px;
+  }
+  h1 {
+    font-size: 56px;
+  }
+  .about_us_title,
+  .spesial h1,
+  .popular h1,
+  .tovary h1,
+  .map_title {
+    font-size: 52px;
+  }
+  .about_us_title,
+  .spesial h1,
+  .map_title {
+    margin-left: 80px;
+  }
+  .footer h2 {
+    font-size: 36px;
+  }
+  .footer p {
+    font-size: 28px;
+  }
+
+  /* Блок «О НАС» – исправляем картинки, чтобы не схлопывались */
+  .about_us_images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    width: 100%; 
+  }
+  .about_us_image1,
+  .about_us_image2 {
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    aspect-ratio: 624 / 320;
+    background-size: cover;
+    background-position: center;
+  }
+  /* Круглые элементы */
+  .about_us_krujok {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+  }
+  .about_us_text_text h2 {
+    font-size: 28px;
+  }
+  .about_us_text_text p {
+    font-size: 22px;
+  }
+
+  /* Блок «ПОПУЛЯРНЫЕ ТОВАРЫ» – аналогично фиксим картинки */
+  .popular_content {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .popular_content_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 560px;
+  }
+  .popular_img1,
+  .popular_img2 {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 624 / 480;
+    background-size: cover;
+    background-position: center;
+    min-height: 280px;
+  }
+  .popular_disctrprp {
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .popular p {
+    font-size: 22px;
+  }
+  .popular h3 {
+    font-size: 28px;
+  }
+
+  /* Карточки спецпредложений */
+  .spesial_content_case {
+    width: 440px;
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  /* ФУТЕР – адаптивная высота */
+  .footer {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .footer_adress,
+  .footer_contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer_icons button {
+    width: 52px;
+    height: 52px;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Скрываем жёлтые декоративные блоки только в адаптиве */
+  .about_us_back,
+  .map_back {
+    display: none;
+  }
+
+  /* Глобальные правки для изображений */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ШАПКА */
+  .header .container {
+    padding: 0 16px;
+  }
+  .navigation_header {
+    gap: 20px;
+    margin-left: 32px;
+  }
+  .navigation_header button {
+    font-size: 24px;
+  }
+  .icons button {
+    width: 44px;
+    height: 44px;
+    background-size: contain;
+  }
+
+  /* О НАС */
+  .about_us_content {
+    margin: 60px 80px 24px 80px;
+  }
+  .about_us_title {
+    margin-left: 64px;
+    font-size: 48px;
+  }
+  .about_us_text_photo {
+    flex-direction: column;
+  }
+  .about_us_images {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .about_us_image1,
+  .about_us_image2 {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 624 / 320;
+    background-size: cover;
+    background-position: center;
+  }
+  .about_us_krujok {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+  }
+  .about_us_text_text h2 {
+    font-size: 26px;
+  }
+  .about_us_text_text p {
+    font-size: 20px;
+  }
+
+  /* СПЕЦПРЕДЛОЖЕНИЯ */
+  .spesial {
+    margin: 60px 80px 80px 80px;
+  }
+  .spesial h1 {
+    margin-left: 64px;
+    font-size: 48px;
+  }
+  .spesial_content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .spesial_content_case {
+    width: 45%;
+    min-width: 280px;
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  /* ПОПУЛЯРНЫЕ ТОВАРЫ */
+  .popular {
+    margin: 60px 80px 80px 80px;
+  }
+  .popular h1 {
+    font-size: 48px;
+  }
+  .popular_content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .popular_content_1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .popular_img1,
+  .popular_img2 {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 624 / 480;
+    background-size: cover;
+    background-position: center;
+  }
+  .popular_disctrprp {
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .popular p {
+    font-size: 20px;
+  }
+  .popular h3 {
+    font-size: 26px;
+  }
+
+  /* ТОВАРЫ И КОРЗИНА */
+  .tovary h1 {
+    margin: 60px 80px 0 80px;
+    font-size: 48px;
+  }
+  .container {
+    margin: 40px 80px;
+    gap: 20px;
+  }
+
+  /* КАРТА */
+  .map_content {
+    margin: 80px 80px 24px 80px;
+  }
+  .map_title {
+    margin-left: 64px;
+    font-size: 48px;
+  }
+  .map_field {
+    height: 500px;
+  }
+
+  
+
+
+  /* ФУТЕР */
+  .footer {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  .footer_content {
+    margin: 40px 80px 0 80px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .footer h2 {
+    font-size: 32px;
+  }
+  .footer p {
+    font-size: 24px;
+  }
+  .footer_adress,
+  .footer_contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer_icons button {
+    width: 48px;
+    height: 48px;
+    background-size: contain;
+  }
+}
+
+/* Планшеты (до 992px) */
+@media (max-width: 992px) {
+  .header {
+    height: auto;
+    min-height: 70px;
+  }
+  .header .container {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+  }
+  .left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .navigation_header {
+    margin-left: 0;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .navigation_header button {
+    font-size: 18px;
+    padding: 6px 8px;
+  }
+  .icons {
+    margin-left: auto;
+  }
+  
+
+  .text-section {
+    height: auto;
+    padding: 80px 20px;
+  }
+  h1 {
+    font-size: 48px;
+  }
+  .text {
+    font-size: 24px;
+  }
+  .highlight {
+    font-size: 24px;
+  }
+  .accent {
+    font-size: 36px;
+  }
+
+  .about_us_content {
+    margin: 40px 40px 24px 40px;
+  }
+  .about_us_title {
+    margin-left: 32px;
+    font-size: 40px;
+  }
+  .about_us_krujok {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+  .about_us_text_text h2 {
+    font-size: 22px;
+  }
+  .about_us_text_text p {
+    font-size: 18px;
+  }
+
+  .spesial {
+    margin: 40px 40px 60px 40px;
+  }
+  .spesial h1 {
+    margin-left: 32px;
+    font-size: 40px;
+  }
+  .spesial_content_case {
+    width: 100%;
+    padding: 30px 20px;
+  }
+  .spesial h2 {
+    font-size: 26px;
+  }
+  .spesial p {
+    font-size: 20px;
+  }
+
+  .popular {
+    margin: 40px 40px 60px 40px;
+  }
+  .popular h1 {
+    font-size: 40px;
+  }
+  .popular_img1,
+  .popular_img2 {
+    max-width: 450px;
+  }
+  .popular_disctrprp {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .popular p {
+    font-size: 18px;
+  }
+  .popular h3 {
+    font-size: 24px;
+  }
+
+  .tovary h1 {
+    margin: 40px 40px 0 40px;
+    font-size: 40px;
+  }
+  .container {
+    margin: 30px 40px;
+    grid-template-columns: 1fr;
+  }
+  .cart {
+    margin-top: 20px;
+  }
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .card img {
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+  }
+  .modal-body {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .note-column textarea {
+    margin-left: 0;
+    height: 120px;
+  }
+
+  .map_content {
+    margin: 80px 40px 24px 40px;
+  }
+  .map_title {
+    margin-left: 32px;
+    font-size: 40px;
+  }
+  .map_field {
+    height: 400px;
+  }
+
+  .footer_content {
+    margin: 40px 40px 0 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .footer_adress,
+  .footer_contacts {
+    flex-direction: row;
+    gap: 24px;
+  }
+  .footer_icons button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Мобильные (до 768px) */
+@media (max-width: 768px) {
+  .header .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .logo {
+    width: 80px;
+  }
+  .logo img {
+    width: 80px;
+  }
+  .navigation_header {
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .navigation_header button {
+    font-size: 14px;
+    padding: 4px 6px;
+  }
+  .icons {
+    justify-content: center;
+    margin-top: 12px;
+  }
+  .icons button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .scroll-section {
+    height: 300vh;
+  }
+  .sticky {
+    top: 120px;
+    height: calc(100vh - 120px);
+  }
+
+  .text-section {
+    padding: 60px 16px;
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 32px;
+  }
+  .text {
+    font-size: 18px;
+    margin-bottom: 32px;
+  }
+  .highlight {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+  .accent {
+    font-size: 28px;
+  }
+
+  .about_us_content {
+    margin: 30px 20px 24px 20px;
+  }
+  .about_us_title {
+    margin-left: 16px;
+    font-size: 32px;
+  }
+  .about_us_krujok {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+  .about_us_text_text h2 {
+    font-size: 18px;
+  }
+  .about_us_text_text p {
+    font-size: 16px;
+  }
+
+  .spesial {
+    margin: 30px 20px 40px 20px;
+  }
+  .spesial h1 {
+    margin-left: 16px;
+    font-size: 32px;
+  }
+  .spesial_content_case {
+    padding: 20px 16px;
+  }
+  .spesial h2 {
+    font-size: 22px;
+  }
+  .spesial p {
+    font-size: 18px;
+  }
+
+  .popular {
+    margin: 30px 20px 40px 20px;
+  }
+  .popular h1 {
+    font-size: 32px;
+  }
+  .popular_img1,
+  .popular_img2 {
+    max-width: 100%;
+  }
+  .popular p {
+    font-size: 18px;
+  }
+  .popular h3 {
+    font-size: 22px;
+  }
+
+  .tovary h1 {
+    margin: 30px 20px 0 20px;
+    font-size: 32px;
+  }
+  .container {
+    margin: 20px 20px;
+  }
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .modal-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .map_content {
+    margin: 100px 20px 24px 20px;
+  }
+  .map_title {
+    margin-left: 16px;
+    font-size: 32px;
+  }
+  .map_field {
+    height: 300px;
+  }
+
+  .footer_content {
+    margin: 30px 20px 0 20px;
+  }
+  .footer h2 {
+    font-size: 24px;
+  }
+  .footer p {
+    font-size: 18px;
+  }
+  .footer_adress,
+  .footer_contacts {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .footer_icons button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Очень маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+  .navigation_header {
+    gap: 4px;
+  }
+  .navigation_header button {
+    font-size: 12px;
+    padding: 3px 4px;
+  }
+  .icons button {
+    width: 32px;
+    height: 32px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  .text {
+    font-size: 16px;
+  }
+  .highlight {
+    font-size: 16px;
+  }
+  .accent {
+    font-size: 24px;
+  }
+  .about_us_title {
+    font-size: 28px;
+  }
+  .about_us_krujok {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+  }
+  .about_us_text_text h2 {
+    font-size: 16px;
+  }
+  .about_us_text_text p {
+    font-size: 14px;
+  }
+  .spesial h1 {
+    font-size: 28px;
+  }
+  .spesial h2 {
+    font-size: 20px;
+  }
+  .spesial p {
+    font-size: 16px;
+  }
+  .popular h1 {
+    font-size: 28px;
+  }
+  .popular p {
+    font-size: 16px;
+  }
+  .popular h3 {
+    font-size: 20px;
+  }
+  .tovary h1 {
+    font-size: 28px;
+  }
+  .map_title {
+    font-size: 28px;
+  }
+  .footer h2 {
+    font-size: 20px;
+  }
+  .footer p {
+    font-size: 16px;
+  }
+  .footer_adress,
+  .footer_contacts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .footer_icons button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* ========== ПРОСТОЙ ХЕДДЕР В КОЛОНКУ ДЛЯ АДАПТИВА ========== */
+
+/* Чуть уменьшаем на планшетах */
+@media (max-width: 992px) {
+  .navigation_header button {
+    font-size: 20px;
+  }
+  .icons button {
+    width: 44px;
+    height: 44px;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .icons{
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* На мобильных */
+@media (max-width: 768px) {
+  .navigation_header button {
+    font-size: 16px;
+  }
+  .icons button {
+    width: 36px;
+    height: 36px;
+  }
+  .logo img {
+    width: 80px;
+  }
+  .icons{
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+/* Очень маленькие телефоны */
+@media (max-width: 480px) {
+  .navigation_header button {
+    font-size: 16px;
+  }
+  .icons button {
+    width: 32px;
+    height: 32px;
+  }
+  .icons{
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo img {
+    width: 60px;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
 }
