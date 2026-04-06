@@ -294,7 +294,6 @@ async function checkout() {
 
 
     if (json.success) {
-      openSuccessModal();
 
       alert("Заказ отправлен! Проверьте почту.");
       closeModal();       // закрыть окно оформления заказа
@@ -309,19 +308,6 @@ async function checkout() {
     console.error("Ошибка при отправке заказа:", err);
     alert("Ошибка при отправке заказа.");
   }
-}
-
-function openSuccessModal() {
-    const modal = document.getElementById("successModal");
-    modal.style.display = "flex";
-    modal.classList.add("show");
-}
-
-// Закрытие окна успешного заказа
-function closeSuccessModal() {
-    const modal = document.getElementById("successModal");
-    modal.style.display = "none";
-    modal.classList.remove("show");
 }
 
 // Модальное окно
