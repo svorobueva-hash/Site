@@ -237,50 +237,65 @@
     </div>
  </section>
 
- <div class="modal" id="orderModal">
-                <div class="modal-content">
+<!-- Модальное окно -->
+    <div class="modal" id="orderModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+          <div class="modal-actions">
+            <button class="contacts">Контакты</button>
+            <span class="close" onclick="closeModal()">✖</span>
+          </div>
+        </div>
 
-                    <div class="modal-header">
-                        <h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+        <!-- Основная область: левая колонка поля, правая примечание -->
+        <div class="modal-body">
+      <!-- Левая колонка -->
+      <div class="form-column">
+        <div class="form-row">
+          <label for="name">ФИО</label>
+          <input id="name">
+        </div>
+        <div class="form-row">
+          <label for="phone">Телефон</label>
+          <input id="phone">
+        </div>
+        <div class="form-row">
+          <label for="address">Адрес</label>
+          <input id="address">
+        </div>
+        <div class="form-row">
+          <label for="email">Почта</label>
+          <input id="email">
+        </div>
+      </div>
 
-                        <div class="modal-actions">
-                            <button class="contacts">Контакты</button>
-                            <span class="close" onclick="closeModal()">✖</span>
-                        </div>
-                    </div>
+      <!-- Правая колонка: примечание -->
+      <div class="note-column">
+        <textarea id="note" placeholder="Примечание..."></textarea>
+      </div>
+    </div>
 
-                    <div class="modal-body">
+    <!-- Итоговая сумма -->
+    <div class="modal-total">Общая сумма заказа: 459 ₽</div>
 
-                        <div class="form-column">
-                            <label>ФИО</label>
-                            <input id="name">
+    <!-- Футер -->
+    <div class="modal-footer">
+      <div class="privacy-wrapper">
+        <input type="checkbox" id="privacyCheck">
+        <label for="privacyCheck">Я согласен на обработку персональных данных и ознакомлен с условиями Политики конфиденциальности </label>
+      </div>
+      <button class="checkoutBtn" onclick="checkout()">Отправить</button>
+    </div>
+  </div>
+</div>
 
-                            <label>Телефон</label>
-                            <input id="phone">
-
-                            <label>Адрес</label>
-                            <input id="address">
-
-                            <label>Почта</label>
-                            <input id="email">
-                            </div>
-
-                            <div class="note-column">
-                            <textarea id="note" placeholder="Примечание..."></textarea>
-                        </div>
-                        <div class="total" id="modalTotal"></div>
-                    </div>
-                    <div style="margin:10px 0;">
-                        <input type="checkbox" id="privacyCheck" onclick="updateCheckoutBtn()">
-                        <label for="privacyCheck">Я согласен с <a href='#' target='_blank'>политикой конфиденциальности</a></label>
-                    </div>
-                    <div class="modal-footer">
-                        <button onclick="checkout()">Отправить</button>
-                    </div>
-
-                </div>
-            </div>
-
+<div class="success-modal" id="successModal">
+    <div class="success-content">
+        <h2>ВАШ ЗАКАЗ УСПЕШНО ОФОРМЛЕН</h2>
+        <button class="success-btn" onclick="closeSuccessModal()">OK</button>
+    </div>
+</div>
 <script src="script.js"></script>
 </body>
 </html>

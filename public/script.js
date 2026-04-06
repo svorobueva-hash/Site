@@ -141,12 +141,14 @@ function renderProducts() {
             <img src="${p.img}">
             <h4>${p.name}</h4>
             <div class="price">${p.price} ₽</div>
-            <div class="qty-btns">
-                <button onclick="changeProductQty(${p.id},-1)">-</button>
-                <span id="productQty${p.id}">${qty}</span>
-                <button onclick="changeProductQty(${p.id},1)">+</button>
+            <div class="qty-add-cart">
+                <div class="qty-btns">
+                    <button onclick="changeProductQty(${p.id},-1)">-</button>
+                    <span id="productQty${p.id}">${qty}</span>
+                    <button onclick="changeProductQty(${p.id},1)">+</button>
+                </div>
+                <button class="addCartBtn" onclick="addToCart(${p.id})">В корзину</button>
             </div>
-            <button onclick="addToCart(${p.id})">В корзину</button>
         `;
 
         container.appendChild(div);
@@ -243,15 +245,20 @@ function renderCart() {
         div.className = "cart-item";
 
         div.innerHTML = `
-            <div>
-                <div>${item.name}</div>
-                <div>${price} ₽</div>
-            </div>
-            <div class="qty-btns">
-                <button onclick="changeQty(${item.id},-1)">-</button>
-                <span>${item.qty}</span>
-                <button onclick="changeQty(${item.id},1)">+</button>
-                <button onclick="removeItem(${item.id})">🗑️</button>
+            <div class="cart-left">
+                <div class="cart-name">${item.name}</div>
+
+                <div class="cart-bottom">
+                    <div class="cart-price">${price} ₽</div>
+
+                    <div class="qty-btns">
+                        <button onclick="changeQty(${item.id},-1)">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQty(${item.id},1)">+</button>
+                    </div>
+
+                    <button class="remove-btn" onclick="removeItem(${item.id})"></button>
+                </div>
             </div>
         `;
 
@@ -285,12 +292,15 @@ async function checkout() {
 
     const json = await response.json();
 
+
     if (json.success) {
+      openSuccessModal();
+
       alert("Заказ отправлен! Проверьте почту.");
-      closeModal();
-      cart = [];
-      renderCart();
-      renderProducts();
+      closeModal();       // закрыть окно оформления заказа
+      cart = [];          // очистить корзину
+      renderCart();       // обновить корзину на странице
+      renderProducts();   // обновить продукты (если нужно)
     } else {
       console.error("Ошибка при оформлении заказа:", json);
       alert("Ошибка при оформлении заказа.");
@@ -299,6 +309,19 @@ async function checkout() {
     console.error("Ошибка при отправке заказа:", err);
     alert("Ошибка при отправке заказа.");
   }
+}
+
+function openSuccessModal() {
+    const modal = document.getElementById("successModal");
+    modal.style.display = "flex";
+    modal.classList.add("show");
+}
+
+// Закрытие окна успешного заказа
+function closeSuccessModal() {
+    const modal = document.getElementById("successModal");
+    modal.style.display = "none";
+    modal.classList.remove("show");
 }
 
 // Модальное окно

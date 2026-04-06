@@ -18,6 +18,14 @@ html {
   transform: translateY(0);
 }
 
+.fade-up h1 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: #B53325;
+    margin: 0;
+    margin-left: 128px;
+}
 
 /*    хедер   */
 
@@ -191,14 +199,6 @@ html {
     max-width: 1200px;
 }
 
-h1{
-    font-family: 'Arsenal SC', sans-serif;
-    font-weight: 700;
-    font-size: 64px;
-    color:#c0392b;
-    margin-bottom:56px;
-}
-
 .highlight{
     color:#FFBC70;
     font-size:32px;
@@ -239,7 +239,6 @@ h1{
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /*    о нас    */
 
@@ -404,9 +403,6 @@ h1{
 .popular1 {
     border-bottom: 4px dashed #B53325;
 }
-.popular h1 {
-    margin: 0;
-}
 
 .popular_content {
     margin-top: 56px;
@@ -461,9 +457,7 @@ h1{
 .tovary{
     border-bottom: 4px dashed #B53325;
 }
-.tovary h1{
-    margin: 80px 328px 0 328px;
-}
+
 .container{
   display:grid;
   grid-template-columns: 2fr 1fr;
@@ -478,16 +472,32 @@ h1{
   gap:0px;
 }
 
-.card{
+.card {
   background:white;
-  padding:40px;
+  padding:20px;
   border-radius:10px;
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start; /* выравнивание влево */
 }
 
-.card img{
+.card img {
   width:100%;
-  height:280px;
+  height:100%;
   object-fit:contain;
+  margin-bottom:15px;
+}
+
+.card h4 {
+  font-size:1.2rem; /* увеличенное название */
+  margin:0;
+  font-weight: 400;
+}
+
+.card .price {
+  font-weight:bold;
+  font-size:1.4rem;
+  margin:8px 0 32px 0;
 }
 
 .price{
@@ -501,20 +511,104 @@ h1{
   align-items:center;
 }
 
+.card .addCartBtn {
+  flex:1;
+  margin-left:10px;
+  background:#ff8f7a;
+  border:none;
+  border-radius:8px;
+  height:56px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
 .cart{
   background:#FFF2E4;
   border-radius: 16px;
   border: 8px solid #FFBC70;
-  margin-top: 52px;
+  margin-top: 20px;
   padding:20px;
   border-radius:10px;
   height:fit-content;
+
+  display: flex;           /* добавляем флекс для центрирования */
+  flex-direction: column;  /* чтобы кнопка шла под списком */
+  align-items: center;
+}
+
+.cart-left{
+  width:100%;
+  margin-left: 16px;
+}
+
+.cart-name{
+  font-weight:400;
+  margin-bottom:6px;
+}
+
+#cartItems {
+    width: 100%;             /* чтобы список растягивался на всю ширину */
+    margin-bottom: 20px;     /* расстояние между списком и кнопкой */
 }
 
 .cart-item{
-  display:flex;
-  justify-content:space-between;
   margin-bottom:10px;
+}
+
+.cart-controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.removeBtn{
+  margin-right:24px; /* мусорку чуть правее */
+  font-size:20px;
+  height: 48px;
+  width: 48px;
+}
+
+.cart-item .remove-btn{
+    width: 48px;
+    height: 48px;
+    border: 2px solid #000000;  /* рамка красная */
+    border-radius: 6px;
+    background: url('remove.png');
+    background-size: 100%;       /* масштабируем картинку */
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    flex: 0 0 auto;  
+    margin-left: 5px;
+}
+
+.cart-item .remove-btn:hover {
+    background-image: url('remove-hover.png');
+    border: 2px solid #B53325;
+}
+
+/* при нажатии */
+.cart-item .remove-btn:active {
+    background-image: url('remove-active.png'); /* картинка при клике */
+    border: 2px solid #B53325;}
+    
+.cart-item .qty-btns{
+  flex: 0 0 auto;   /* запрещаем растягивание */
+  width: 144px;     /* уменьшаем ширину блока +/- */
+  height: 48px;
+  padding: 0 14px;
+}
+
+.cart-item .qty-btns button{
+  flex: 0;         
+  padding: 0 8px;
+  font-size: 1.5rem;
+}
+
+.cart-item .qty-btns span{
+  flex: 0;
+  min-width: 18px;
+  text-align: center;
 }
 
 .tovary button{
@@ -525,8 +619,13 @@ h1{
   cursor:pointer;
 }
 
-.checkout{
-  margin-top:20px;
+.cart h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 40px;      
+    color: #B53325;      
+    text-align: center;   
+    margin-bottom: 20px;  
 }
 
 input{
@@ -535,48 +634,280 @@ input{
   margin-top:8px;
 }
 
-.cart-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #eee;
-padding:10px 0;
+.cart-bottom{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
-.qty-btns{
-display:flex;
-gap:5px;
-align-items:center;
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+}
+
+.cart-price{
+  font-weight:bold;
+  font-size:1.4rem; /* цена крупнее */
+  margin-right:auto;
+}
+
+.qty-btns {
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  height: 53px; 
+  padding: 0 2px;
+}
+
+.qty-btns button {
+  flex: 1; 
+  border: none;
+  background: white;
+  color: #B53325;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.qty-btns span {
+  flex: 1;
+  color: #B53325;  
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.qty-add-cart {
+  display:flex;
+  align-items:center;
+  gap:0px;
+  width:100%;
+}
+
+.addCartBtn {
+  flex: 1;
+  background: #FFC5B7;      
+  color: #B53325; 
+  border: none;
+  border-radius: 8px;
+  height: 55px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .checkoutBtn{
-margin-top:20px;
-width:100%;
-background:#f1a193;
-padding:12px;
-border:none;
-cursor:pointer;
+        margin-top:0px;
+        margin-bottom: 8px;
+        width: 54%;
+        background:#FFC5B7;
+        height: 55px;
+        border:16px;
+        cursor:pointer;
+        font-size: 1.2rem;
+        font-weight: 600; 
+        color: #B53325;  
+    }
+.addCartBtn:hover,
+.checkoutBtn:hover {
+  background: #FFF;
+  border: 2px solid #B53325;
+}
+
+/* при нажатии */
+.addCartBtn:active,
+.checkoutBtn:active {
+  background: #B53325; 
+  color: #fff;
 }
 
 /* модальное окно отправки */
 
 .modal{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.5);
-display:none;
-justify-content:center;
-align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
 }
 
 .modal-content{
-background:#fff;
-padding:30px;
-width:800px;
-border-radius:10px;
+    background:#fff;
+    border: 7px solid #B53325;
+    padding:30px;
+    width:1000px;
+    border-radius:10px;
+}
+
+.modal-header h2{
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    color: #B53325;
+    margin:0;
+}
+
+.modal-body {
+    margin-top: 24px;
+    display: flex; /* используем flex вместо grid для контроля ширины */
+    gap: 20px;
+    align-items: center;
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-column label{
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #B53325;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-row label {
+    width: 80px;           /* фиксированная ширина */
+    text-align: right;     /* выравнивание текста справа */
+    font-weight: 600;
+    color: #B53325;
+    font-size: 14px;
+    flex-shrink: 0;        /* не сжимается */
+}
+
+.form-row input {
+    flex: 1;               /* занимает всё оставшееся место */
+    padding: 12px 16px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    height: 48px;          /* фиксированная высота */
+}
+
+.form-column input{
+    width:100%;
+    padding:8px;
+    border:2px solid #000;
+    border-radius:6px;
+    font-size: 1rem;
+    box-sizing:border-box;
+}
+
+.note-column label {
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 6px;
+}
+
+.note-column {
+    padding-top: 8px;
+    width: 500px;
+    flex-shrink: 0;
+}
+
+.note-column textarea {
+    width: 100%;
+    height: 230px;         /* примерно высота 4 полей слева */
+    padding: 12px 16px;
+    border: 2px solid #B53325;
+    border-radius: 8px;
+    font-size: 15px;
+    resize: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-row label {
+    width: 60px;       /* фиксированная ширина для всех полей */
+    text-align: left;
+    font-size: 20px;
+    align-items: center;
+    font-weight: 600;
+    color: #000;
+}
+
+.form-row input {
+    flex: 1;            /* поле занимает оставшееся место до примечания */
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.note-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.note-row label {
+    width: 120px;
+    text-align: right;
+    font-weight: 600;
+    color: #B53325;
+}
+
+.note-row textarea {
+    flex: 1;
+    height: 53px;       /* такая же высота, как обычные поля input */
+    padding: 8px;
+    border: 2px solid #B53325;
+    border-radius: 6px;
+    font-size: 1rem;
+    resize: none;
+}
+
+.modal-footer button{
+    width: 200px;
+    height: 55px;
+    background:#FFC5B7;
+    color:#B53325;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition: all 0.1s ease;
+}
+
+.modal-footer button:hover{
+    background:#FFF;
+    border:2px solid #B53325;
+}
+
+.modal-footer button:active{
+    background:#B53325;
+    color:#fff;
+}
+
+.modal-total {
+    font-weight: 800;
+    font-size: 22px;
+    color: #000;
+    text-align: right;
+    margin: 12px 0;
+    padding: 8px 12px;
+    border-radius: 8px;
 }
 
 .modal-header{
@@ -591,38 +922,157 @@ gap:15px;
 align-items:center;
 }
 
-.modal-body{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-margin-top:20px;
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
 }
 
-.form-column{
-display:flex;
-flex-direction:column;
-gap:10px;
+.modal-footer .privacy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #B53325;
 }
 
-.note-column textarea{
-width:100%;
-height:180px;
-margin-left: 16px;
+.privacy-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    max-width: 60%; /* занимает левую часть */
 }
 
-.modal-footer{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-top:20px;
+.privacy-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #B53325;
+    cursor: pointer;
+}
+
+.privacy-wrapper label a {
+    color: #B53325;
+    text-decoration: underline;
+}
+
+.form-row input#phone {
+    margin-left: 32px;
+    width: 380px;
+    flex: none; /* отключаем растягивание */
 }
 
 .close{
-cursor:pointer;
-font-size:22px;
+    cursor:pointer;
+    font-size:56px;
+    color: #B53325;
 }
 
+.close:hover {     
+    transform: scale(1.1);     /* немного увеличиваем */
+}
 
+/* при нажатии */
+.close:active {    /* более темный оттенок красного */
+    transform: scale(0.95);    /* эффект «нажатия» */
+}
+/* стиль для кнопки Контакты как у Отправить */
+.contacts {
+    width: 200px;               /* как у checkoutBtn */
+    height: 55px;
+    background: #FFC5B7;
+    color: #B53325;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    margin-right: 8px;
+}
+
+/* hover и active как у checkoutBtn */
+.contacts:hover {
+    background: #FFF;
+    border: 2px solid #B53325;
+}
+
+.contacts:active {
+    background: #B53325;
+    color: #fff;
+}
+
+css
+/* Окно успеха */
+.success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+}
+
+.success-modal.show {
+    display: flex;
+}
+
+.success-content {
+    background: #fff;
+    padding: 40px 60px;
+    border: 2px solid #B53325;
+    border-radius: 12px;
+    text-align: center;
+    animation: successIn 0.3s ease;
+}
+
+@keyframes successIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.success-content h2 {
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #B53325;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+    letter-spacing: 1px;
+}
+
+.success-btn {
+    width: 120px;
+    height: 45px;
+    background: #FFC5B7;
+    color: #B53325;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.success-btn:hover {
+    background: #B53325;
+    color: #fff;
+    transform: scale(1.05);
+}
 
 
 /*   я карта    */
@@ -1216,6 +1666,11 @@ font-size:22px;
     object-fit: contain;
   }
 
+  .cart-left{
+    width:100%;
+    margin-left: 8px;
+    }
+
   .modal-content {
     width: 90%;
     max-width: 600px;
@@ -1380,6 +1835,44 @@ font-size:22px;
     gap: 8px;
   }
 
+  .cart-left{
+    width:100%;
+    margin-left: 2px;
+    }
+
+   /* Уменьшаем размер модального окна */
+    .modal-content {
+        width: 90%;
+        max-width: 500px;
+        padding: 16px;
+        border-width: 5px; /* немного тоньше рамка */
+    }
+
+    /* Меньший крестик для закрытия и чуть выше */
+    .close {
+        font-size: 32px; /* меньше */
+        position: absolute;
+        top: 12px;        /* поднимаем к верху */
+        right: 12px;      /* отступ справа */
+    }
+
+    /* Корректируем поля формы */
+    .form-row input {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+
+    .note-column textarea {
+        height: 100px; /* меньше высота */
+    }
+
+    /* Мобильная кнопка */
+    .modal-footer button {
+        width: 48%;
+        height: 48px;
+        font-size: 1rem;
+    }
+
   .modal-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1472,6 +1965,10 @@ font-size:22px;
   .popular h1 {
     font-size: 28px;
   }
+  .cart-left{
+    width:100%;
+    margin-left: 0px;
+    }
   .popular p {
     font-size: 16px;
   }
