@@ -1880,12 +1880,13 @@ css
   .form-row {
     flex-direction: column;
     gap: 6px;
-    width: 320px;
+    width: 286px;
   }
   .form-row input#phone{
     flex-direction: column;
     gap: 6px;
-    width: 290px;
+    width: 260px;
+    margin-left: 0px;
   }
 
   .form-row label {
@@ -1916,8 +1917,9 @@ css
     font-size: 14px;
   }
     .note-column textarea{
-        width: 320px;
+        width: 260px;
         align-items: center;
+        margin-left: 120px;
     }
 
   .note-row textarea {
